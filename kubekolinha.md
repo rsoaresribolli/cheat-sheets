@@ -91,11 +91,28 @@ kubectl delete secret <secret_name>
 ```bash
 kubectl create secret generic <secret-name> --from-file=./username.txt --from-file=./password.txt
 ```
-Specifying key
+1.1. From file, specifying secret key
 ```bash
 kubectl create secret generic <secret-name> --from-file=username=./username.txt --from-file=password=./password.txt
 ```
 2. From literal
 ```bash
 kubectl create secret generic <secret-name> --from-literal=username=devuser --from-literal=password='S!B\*d$zDsb='
+```
+
+3. From yaml
+**secret.yaml**
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+ name: secret-name
+type: Opaque
+stringData:
+ VAR1: VALUE1
+ VAR2: VALUE2
+```
+
+```bash
+kubectl apply -f secret.yaml
 ```
