@@ -29,6 +29,16 @@ kubectl get ns
 kubectl -n <namespace> get pods
 ```
 
+### Tip: Get pod name
+```bash
+kubectl -n <namespace> get po --output=jsonpath={.items..metadata.name}
+```
+
+To put it in a variable:
+```bash
+pod=kubectl -n <namespace> get po --output=jsonpath={.items..metadata.name}
+```
+
 ### Tip: copy pod name to clipboard
 ```bash
  kubectl -n <namespace> get pods | awk 'NR==2{print $1}' > /dev/clipboard
