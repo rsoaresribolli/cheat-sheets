@@ -74,3 +74,15 @@ To print secret content to stdout
 ```bash
 git secret cat <filepath>
 ```
+
+# Managing GPG Keys
+
+## List public keys
+```bash
+gpg --list-keys
+```
+
+## List private keys
+```bash
+gpg --list-secret-keys
+```
